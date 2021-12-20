@@ -129,28 +129,53 @@ int	place_of_index(t_list *l, int index)
 	}
 	return -1;
 }
-
+int	midle_index(t_list *a)
+{
+	int j;
+	j= a->index;
+	while(a->next != NULL)
+	{
+		
+		if(j > a->next->index)
+		{
+			
+			j = a->next->index;
+		}
+		a = a->next;
+	}
+	// i = i - j;
+	return j;
+}
 two_list	*instruction_when(two_list *ab, int index)
 {
 	
 	int g = place_of_index(ab->a, index);
-	
+	// ft_putnbr_fd(g,1);
+	// ft_putendl_fd("----", 1);
 	if(ab->a->index < index)
+	{
 		ab = move1to2(ab);
-	if(ab->a->next->index < index)
+		// ab = instruction_when(ab, index);
+	}
+	else if(ab->a->next->index < index)
 	{
 		swap(ab->a);
-		ab = move1to2(ab);
+		ab = instruction_when(ab,index);
 	}
-	else if(place_of_index(ab->a, index) < g && place_of_index(ab->a, index) != -1)
+	else if(place_of_index(ab->a, index) < ft_lstsize(ab->a)/2 && place_of_index(ab->a, index) != -1)
 	{
+		// printf("-1-\n");
 		ab->a = round_list(ab->a);
 		ab = instruction_when(ab, index);
 	}
-	// else if(place_of_index(ab->a, index) > g/2 && g/2 != -1)
-	// {
-	// 	ab->a = rev_round(a);
-	// 	ab = instruction_when(ab->a, ab->b, index);
-	// }
+	else if(place_of_index(ab->a, index) >= ft_lstsize(ab->a)/2 && place_of_index(ab->a,index) != -1)
+	{
+		// printf("-2-\n");
+		ab->a = rev_round(ab->a);
+		ab = instruction_when(ab, index);
+	}
+	// else if (check_sort(ab->a) != 0)
+	// 	ab = instruction_when(ab, ft_lstsize(ab->a)/2);
 	return ab;
 }
+// totalement 3akes dyal li lfo9

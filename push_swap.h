@@ -19,4 +19,5 @@ t_list	*rev_round(t_list *lst);
 int	place_of_index(t_list *l, int index);
 two_list	*instruction_when(two_list *ab, int index);
 two_list	*move1to2(two_list *ab);
+int	midle_index(t_list *a);
 #endif

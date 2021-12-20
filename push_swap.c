@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 03:31:50 by akhouya           #+#    #+#             */
-/*   Updated: 2021/12/20 07:40:51 by akhouya          ###   ########.fr       */
+/*   Updated: 2021/12/20 19:53:20 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int	strisdigit(char *str)
 	k = 1;
 	if (ft_strlen(str) == 0)
 		return 0;
+	if(*str == '-')
+	{
+		str++;
+		k = 0;
+	}
 	while(*str && k == 1)
 	{
 		k = ft_isdigit(*str++);
@@ -101,11 +106,28 @@ int main(int argc,char *argv[])
 	f = malloc(sizeof(two_list));
 	f->a = list_nbr;
 	f->b = k;
-	f = instruction_when(f, 2);
+	int size;
+	size = 0;
+	if(ft_lstsize(f->a) > 5)
+	{
+		while(check_sort(f->a) != 0)
+		{
+			if(ft_lstsize(f->a) == 2 && f->a->index > f->a->next->index)
+			{
+				swap(f->a);
+				break;
+			}
+			f = instruction_when(f, size + ft_lstsize(f->a)/2);
+			size = midle_index(f->a);
+		}
+		// printf("--%d--\n",ft_lstsize(f->a));
+		// f = instruction_when(f, 6);
+	}
+	
 	// f = move1to2(f);
 	while (f->a!= NULL)
 	{
-		ft_putnbr_fd(f->a->index, 1);
+		ft_putnbr_fd(f->a->index, 2);
 		ft_putstr_fd("\n",1);
 		f->a = f->a->next;
 	}
