@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 03:31:50 by akhouya           #+#    #+#             */
-/*   Updated: 2021/12/19 15:41:39 by akhouya          ###   ########.fr       */
+/*   Updated: 2021/12/20 07:40:51 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,22 +94,29 @@ int main(int argc,char *argv[])
 	else
 		ft_putendl_fd("list is not sort", 1);
 	// swap(list_nbr);
-	list_nbr = rev_round(list_nbr);
+	// list_nbr = rev_round(list_nbr);
 	t_list *k;
 	k = NULL;
 	two_list *f;
 	f = malloc(sizeof(two_list));
 	f->a = list_nbr;
 	f->b = k;
-	instruction_when(f, 2);
-	// while (list_nbr != NULL)
-	// {
-	// 	ft_putnbr_fd(list_nbr->index, 1);
-	// 	ft_putstr_fd("\n",1);
-	// 	list_nbr = list_nbr->next;
-	// }
-	// printf("%d", f->a->index);
-		
+	f = instruction_when(f, 2);
+	// f = move1to2(f);
+	while (f->a!= NULL)
+	{
+		ft_putnbr_fd(f->a->index, 1);
+		ft_putstr_fd("\n",1);
+		f->a = f->a->next;
+	}
+	ft_putendl_fd("---", 1);
+	while (f->b!= NULL)
+	{
+		ft_putnbr_fd(f->b->index, 1);
+		ft_putstr_fd("\n",1);
+		f->b = f->b->next;
+	}
+
 	list_nbr = h;
 	ft_lstclear(&list_nbr);
 	// system("leaks a.out");

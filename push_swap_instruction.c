@@ -61,13 +61,16 @@ two_list	*rev_round2(t_list *lst_a, t_list *lst_b)
 
 two_list	*move1to2(two_list *ab)
 {
-	t_list	*h;
-	t_list		*tmp;
-	tmp = ab->a->next->next;
-	ab->a->next = ab->b;
-	h = ab->a;
-	ab->a = tmp;
-	ab->b = h;
+	t_list	*a;
+	t_list	*b;
+	a = ab->a;
+	b = ab->b;
+	t_list *tmp;
+	tmp = a;
+	a  = a->next;
+	ab->a = a;
+	ab->b = tmp;
+	tmp->next = b;
 	return ab;
 }
 
@@ -122,31 +125,32 @@ int	place_of_index(t_list *l, int index)
 		{
 			return count;
 		}
+		l = l->next;
 	}
 	return -1;
 }
 
-void	instruction_when(two_list *ab, int index)
+two_list	*instruction_when(two_list *ab, int index)
 {
 	
 	int g = place_of_index(ab->a, index);
 	
 	if(ab->a->index < index)
 		ab = move1to2(ab);
-	// else if(a->next->index < index)
-	// {
-	// 	swap(a);
-	// 	ab = move1to2(a , b);
-	// }
-	// else if(place_of_index(a, index) < g && place_of_index(ab->a, index) != -1)
-	// {
-	// 	ab->a = round_list(a);
-	// 	ab = instruction_when(ab->a, ab->b, index);
-	// }
+	if(ab->a->next->index < index)
+	{
+		swap(ab->a);
+		ab = move1to2(ab);
+	}
+	else if(place_of_index(ab->a, index) < g && place_of_index(ab->a, index) != -1)
+	{
+		ab->a = round_list(ab->a);
+		ab = instruction_when(ab, index);
+	}
 	// else if(place_of_index(ab->a, index) > g/2 && g/2 != -1)
 	// {
 	// 	ab->a = rev_round(a);
 	// 	ab = instruction_when(ab->a, ab->b, index);
 	// }
-
+	return ab;
 }
