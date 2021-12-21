@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 03:31:50 by akhouya           #+#    #+#             */
-/*   Updated: 2021/12/21 07:30:48 by akhouya          ###   ########.fr       */
+/*   Updated: 2021/12/21 08:17:56 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,7 @@ int main(int argc,char *argv[])
 	// f = instruction_when_rev(f, midle_index(f->b));
 	// f = instruction_when_rev(f, ft_lstlast(f->b)->index / 2);
 	while(f->b!= NULL)
-	{
-		
 		f = instruction_when_rev(f, ft_lstlast(f->b)->index / 2);
-		
-	}
 	
 	// f = move1to2(f);
 	while (f->a!= NULL)
@@ -155,6 +151,12 @@ int main(int argc,char *argv[])
 	}
 
 	list_nbr = h;
-	ft_lstclear(&list_nbr);
+	ft_lstclear(&(f->a));
+	ft_lstclear(&(f->b));
+	f->a = NULL;
+	f->b = NULL;
+	free(f);
+	f = NULL;
 	// system("leaks a.out");
+
 }

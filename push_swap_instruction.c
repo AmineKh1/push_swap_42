@@ -11,15 +11,22 @@ void	swap(t_list *lst)
 	lst->index = lst->next->index;
 	lst->next->content = content;
 	lst->next->index = index;
-	
-
-
 }
-
+void	swap_a(t_list *lst)
+{
+	swap(lst);
+	ft_putendl_fd("sa", 1);
+}
+void	swap_b(t_list *lst)
+{
+	swap(lst);
+	ft_putendl_fd("sa", 1);
+}
 void	swap_ss(t_list *lst_a, t_list *lst_b)
 {
 	swap(lst_a);
 	swap(lst_b);
+	ft_putendl_fd("ss", 1);
 }
 
 t_list	*round_list(t_list *lst)
@@ -31,12 +38,24 @@ t_list	*round_list(t_list *lst)
 	lst->next = NULL;
 	return h;
 }
-
+t_list	*round_a(t_list *lst)
+{
+	ft_putendl_fd("ra", 1);
+	return (round_list(lst));
+	
+}
+t_list	*round_b(t_list *lst)
+{
+	ft_putendl_fd("rb", 1);
+	return (round_list(lst));
+	
+}
 two_list	*round_ab(t_list *lst_a, t_list *lst_b)
 {
 	two_list	*ab;
 	ab->a = round_list(lst_a);
 	ab->b = round_list(lst_b);
+	ft_putendl_fd("rr", 1);
 	return (ab);
 }
 
@@ -50,12 +69,22 @@ t_list	*rev_round(t_list *lst)
 	h->next = NULL;
 	return j;
 }
-
+t_list	*rev_round_a(t_list *lst)
+{
+	ft_putendl_fd("rra", 1);
+	return (rev_round_a(lst));
+}
+t_list	*rev_round_b(t_list *lst)
+{
+	ft_putendl_fd("rrb", 1);
+	return (rev_round_a(lst));
+}
 two_list	*rev_round2(t_list *lst_a, t_list *lst_b)
 {
 	two_list	*ab;
 	ab->a = rev_round(lst_a);
 	ab->b = rev_round(lst_b);
+	ft_putendl_fd("rrr", 1);
 	return (ab);
 }
 
@@ -71,6 +100,7 @@ two_list	*move1to2(two_list *ab)
 	ab->a = a;
 	ab->b = tmp;
 	tmp->next = b;
+	ft_putendl_fd("pa", 1);
 	return ab;
 }
 two_list	*move2to1(two_list *ab)
@@ -86,6 +116,7 @@ two_list	*move2to1(two_list *ab)
 	ab->a = tmp;
 	
 	tmp->next = a;
+	ft_putendl_fd("pb", 1);
 	return ab;
 }
 
