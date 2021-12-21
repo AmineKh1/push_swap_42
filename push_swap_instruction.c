@@ -73,6 +73,21 @@ two_list	*move1to2(two_list *ab)
 	tmp->next = b;
 	return ab;
 }
+two_list	*move2to1(two_list *ab)
+{
+	t_list	*a;
+	t_list	*b;
+	a = ab->a;
+	b = ab->b;
+	t_list *tmp;
+	tmp = b;
+	b  = b->next;
+	ab->b = b;
+	ab->a = tmp;
+	
+	tmp->next = a;
+	return ab;
+}
 
 int	check_sort(t_list *lst)
 {
@@ -179,3 +194,38 @@ two_list	*instruction_when(two_list *ab, int index)
 	return ab;
 }
 // totalement 3akes dyal li lfo9
+// two_list	*rev_rbothif(two_list	*ab)
+// {
+// 	if()
+// }
+two_list	*instruction_when_rev(two_list *ab, int index)
+{
+	if(ab->b->index == ab->a->index - 1)
+	{
+		ab = move2to1(ab);
+	}
+	else if( ab->b->next->index > index)
+	{
+		swap(ab->b);
+		ab = instruction_when_rev(ab, index);
+	}
+	else if(place_of_index(ab->b, index) > ft_lstsize(ab->b)/2 && place_of_index(ab->b, index) != -1)
+	{
+		ab->b = round_list(ab->b);
+		ab = instruction_when_rev(ab, index);
+	}
+	else if(place_of_index(ab->b, index) <= ft_lstsize(ab->b)/2)
+	{
+		ab->b = rev_round(ab->b);
+		ab = instruction_when_rev(ab, index);
+	}
+	// else if(place_of_index(ab->b, index) <= ft_lstsize(ab->b)/2 && place_of_index(ab->b, index) != -1)
+	// {
+	// 	ab->b = round_list(ab->b);
+	// 	ab = instruction_when_rev(ab, index);
+	// }
+	// if(ab->b->index == ab->a->index - 1)
+	// 	ab = move2to1(ab);
+	// else if( ab->b->next)
+	return ab;
+}
