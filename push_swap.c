@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 03:31:50 by akhouya           #+#    #+#             */
-/*   Updated: 2021/12/21 08:17:56 by akhouya          ###   ########.fr       */
+/*   Updated: 2021/12/21 19:37:16 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	strisdigit(char *str)
 	k = 1;
 	if (ft_strlen(str) == 0)
 		return 0;
-	if(*str == '-')
+	if(*str == '-' && *(str + 1) != '\0')
 	{
 		str++;
-		k = 0;
+		k = 1;
 	}
 	while(*str && k == 1)
 	{
@@ -45,17 +45,18 @@ int check_list(t_list *lst)
 	}
 	return 0;
 }
-// t_list	*index(t_list *in)
-// {
-	
-// }
+
 int main(int argc,char *argv[])
 {
-	int i;
+	
 	t_list *list_nbr;
 	t_list *h;
+	t_list *k;
+	two_list *f;
 	char **s;
 	int j;
+	int size;
+	int i;
 
 	i = 0;
 	j = 0;
@@ -94,19 +95,17 @@ int main(int argc,char *argv[])
 	}
 	index_list(list_nbr);
 	h = list_nbr;
-	if(check_sort(list_nbr) == 0)
-		ft_putendl_fd("list is sort", 1);
-	else
-		ft_putendl_fd("list is not sort", 1);
-	// swap(list_nbr);
-	// list_nbr = rev_round(list_nbr);
-	t_list *k;
+	// if(check_sort(list_nbr) == 0)
+	// 	ft_putendl_fd("list is sort", 1);
+	// else
+	// 	ft_putendl_fd("list is not sort", 1);
+	
 	k = NULL;
-	two_list *f;
+	
 	f = malloc(sizeof(two_list));
 	f->a = list_nbr;
 	f->b = k;
-	int size;
+	
 	size = 0;
 	if(ft_lstsize(f->a) > 5)
 	{
@@ -120,35 +119,23 @@ int main(int argc,char *argv[])
 			f = instruction_when(f, size + ft_lstsize(f->a)/2);
 			size = midle_index(f->a);
 		}
-		// printf("--%d--\n",ft_lstsize(f->a));
-		// f = instruction_when(f, 6);
 	}
-	// move2to1(f);
-	// f = instruction_when_rev(f,  midle_index(f->b));
-	// f = instruction_when_rev(f, midle_index(f->b));
-	// f = instruction_when_rev(f, midle_index(f->b));
-	// f = instruction_when_rev(f, midle_index(f->b));
-	// f = instruction_when_rev(f, midle_index(f->b));
-	// f = instruction_when_rev(f, midle_index(f->b));
-	// f = instruction_when_rev(f, midle_index(f->b));
-	// f = instruction_when_rev(f, ft_lstlast(f->b)->index / 2);
 	while(f->b!= NULL)
-		f = instruction_when_rev(f, ft_lstlast(f->b)->index / 2);
-	
-	// f = move1to2(f);
-	while (f->a!= NULL)
-	{
-		ft_putnbr_fd(f->a->index, 2);
-		ft_putstr_fd("\n",1);
-		f->a = f->a->next;
-	}
-	ft_putendl_fd("---", 1);
-	while (f->b!= NULL)
-	{
-		ft_putnbr_fd(f->b->index, 1);
-		ft_putstr_fd("\n",1);
-		f->b = f->b->next;
-	}
+		f = instruction_when_rev(f, big_in_b(f->b));
+
+	// while (f->a!= NULL)
+	// {
+	// 	ft_putnbr_fd(f->a->index, 2);
+	// 	ft_putstr_fd("\n",1);
+	// 	f->a = f->a->next;
+	// }
+	// ft_putendl_fd("---", 1);
+	// while (f->b!= NULL)
+	// {
+	// 	ft_putnbr_fd(f->b->index, 1);
+	// 	ft_putstr_fd("\n",1);
+	// 	f->b = f->b->next;
+	// }
 
 	list_nbr = h;
 	ft_lstclear(&(f->a));

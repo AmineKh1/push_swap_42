@@ -22,4 +22,5 @@ two_list	*move1to2(two_list *ab);
 int	midle_index(t_list *a);
 two_list	*instruction_when_rev(two_list *ab, int index);
 two_list	*move2to1(two_list *ab);
+int	big_in_b(t_list *a);
 #endif
