@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 03:31:50 by akhouya           #+#    #+#             */
-/*   Updated: 2021/12/21 19:37:16 by akhouya          ###   ########.fr       */
+/*   Updated: 2021/12/23 20:31:21 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,22 @@ int	strisdigit(char *str)
 	}
 	return k;
 }
+void	printlis(two_list *f)
+{
+	while (f->a!= NULL)
+	{
+		ft_putnbr_fd(f->a->index, 2);
+		ft_putstr_fd("\n",1);
+		f->a = f->a->next;
+	}
+	ft_putendl_fd("---", 1);
+	while (f->b!= NULL)
+	{
+		ft_putnbr_fd(f->b->index, 1);
+		ft_putstr_fd("\n",1);
+		f->b = f->b->next;
+	}
+}
 int check_list(t_list *lst)
 {
 	t_list *h;
@@ -45,7 +61,7 @@ int check_list(t_list *lst)
 	}
 	return 0;
 }
-
+#include<stdio.h>
 int main(int argc,char *argv[])
 {
 	
@@ -107,36 +123,117 @@ int main(int argc,char *argv[])
 	f->b = k;
 	
 	size = 0;
-	if(ft_lstsize(f->a) > 5)
+	int w;
+	int y;
+	y = 0;
+	w = 0;
+	// if(ft_lstsize(f->a) > 5)
+	// {
+	// 	f->size = ft_lstsize(f->a)/2;
+	// 	f->count = ft_lstsize(f->a);
+	// 	w = ft_lstsize(f->a)/2;
+	// 	while(check_sort(f->a) != 0)
+	// 	{
+	// 		if(ft_lstsize(f->a) == 2)
+	// 		{
+	// 			if(f->a->index > f->a->next->index)
+	// 				swap(f->a);
+	// 			else
+	// 				move1to2(f);
+	// 			break;
+	// 		}
+	// 		if(ft_lstsize(f->a) < f->size)
+	// 		{
+	// 			y = (f->size)%2;
+	// 			f->size = (f->size)/2;
+	// 			w = (f->count) - (f->size);
+	// 		}
+	// 		f = instruction_when(f, w);
+	// 		i = size+ ft_lstsize(f->a)/2;
+	// 		printf("---|%d|---\n",f->size);
+	// 		size = midle_index(f->a);
+	// 		// size = midle_index(f->a);
+	// 		// printf("---%d---|---%d---\n", size, ft_lstsize(f->a)/2);
+	// 		// if(f->b->index >= 49)
+	// 		// 	break;
+	// 	}
+	// }
+	int p;
+	int r;
+	int u;
+	r = ft_lstsize(f->a);
+	p = r/2;
+	// while(check_sort(f->a) !=0)
+	// {
+		// if(ft_lstsize(f->a) == 2)
+		// {
+		// 	if(f->a->index > f->a->next->index)
+		// 		swap(f->a);
+		// 	else
+		// 		move1to2(f);
+		// 	break;
+	// 	}
+	double o;
+	if(ft_lstsize(f->a) <= 100)
+		o = 1.36;
+	else
+		o = 1.215;
+	while(check_sort(f->a) != 0 )
 	{
-		while(check_sort(f->a) != 0)
+		u = p;
+		u = r - p;
+		while(place_of_index(f->a, u) != -1)
 		{
-			if(ft_lstsize(f->a) == 2 && f->a->index > f->a->next->index)
-			{
-				swap(f->a);
-				break;
-			}
-			f = instruction_when(f, size + ft_lstsize(f->a)/2);
-			size = midle_index(f->a);
+			f = instruction_when(f, u);
 		}
+		p = p/o;
+		//prefcet for p = 1.33 <= 100
 	}
+		// u = p;
+		// u = r - p;
+		// while(place_of_index(f->a, u) != -1)
+		// {
+		// 	f = instruction_when(f, u);
+		// }
+		// p = p/2;
+		
+		// u = p;
+		// u = r - p;
+		// while(place_of_index(f->a, u) != -1)
+		// {
+		// 	f = instruction_when(f, u);
+		// }
+		// p = p/2;
+		// u = p;
+		// u = r - p;
+		// while(place_of_index(f->a, u) != -1)
+		// {
+		// 	f = instruction_when(f, u);
+		// }
+		// p = p/2;
+		// u = p;
+		// u = r - p;
+		// while(place_of_index(f->a, u) != -1)
+		// {
+		// 	f = instruction_when(f, u);
+		// }
+		// p = p/2;
+		// u = p;
+		// u = r - p;
+		// while(place_of_index(f->a, u) != -1)
+		// {
+		// 	f = instruction_when(f, u);
+		// }
+		// p = p/2;
+		
+	// }
+	// printf("-----------\n");
 	while(f->b!= NULL)
 		f = instruction_when_rev(f, big_in_b(f->b));
-
-	// while (f->a!= NULL)
-	// {
-	// 	ft_putnbr_fd(f->a->index, 2);
-	// 	ft_putstr_fd("\n",1);
-	// 	f->a = f->a->next;
-	// }
-	// ft_putendl_fd("---", 1);
-	// while (f->b!= NULL)
-	// {
-	// 	ft_putnbr_fd(f->b->index, 1);
-	// 	ft_putstr_fd("\n",1);
-	// 	f->b = f->b->next;
-	// }
-
+	// round_ab(f);
+	// round_ab(f);
+	// printlis(f);
+	
 	list_nbr = h;
 	ft_lstclear(&(f->a));
 	ft_lstclear(&(f->b));
@@ -147,3 +244,4 @@ int main(int argc,char *argv[])
 	// system("leaks a.out");
 
 }
+// rebuild functions of sort from midlle and create fucmtion of sorting 5 algo

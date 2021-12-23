@@ -10,6 +10,8 @@ typedef struct tw_list
 {
 	struct s_list	*a;
 	struct s_list	*b;
+	int				size;
+	int				count;
 }			two_list;
 void	index_list(t_list *lst);
 int	check_sort(t_list *lst);
@@ -23,4 +25,6 @@ int	midle_index(t_list *a);
 two_list	*instruction_when_rev(two_list *ab, int index);
 two_list	*move2to1(two_list *ab);
 int	big_in_b(t_list *a);
+void	printlis(two_list *f);
+two_list	*round_ab(two_list *ab);
 #endif
