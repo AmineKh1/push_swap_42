@@ -3,36 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhouya <akhouya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:12:50 by akhouya           #+#    #+#             */
-/*   Updated: 2021/11/15 18:25:11 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/05/09 19:22:25 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-static int	calcule(const char *nptr, int signe)
+static int	calcule(const char *nptr, int sign, t_list **list_nbr, char **s)
 {
 	unsigned long	r;
-	unsigned long	l;
 
-	l = 9223372036854775808UL;
 	r = 0;
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		r = r * 10;
-		if (r > 9223372036854775807 && signe == 1)
-			return (-1);
-		if (r > l && signe == -1)
-			return (0);
+		if ((r > 2147483647 && sign == 1) || (r > 2147483648 && sign == -1))
+		{
+			ft_lstclear(list_nbr);
+			frealltab(s);
+			free(s);
+			ft_putendl_fd("error", 1);
+			exit(1);
+		}
 		r = r + (*nptr - '0');
 		nptr++;
 	}
-	return ((int)r * signe);
+	return ((int)r * sign);
 }
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr, t_list **list_nbr, char **s)
 {
 	unsigned long	r;
 	int				signe;
@@ -49,5 +51,6 @@ int	ft_atoi(const char *nptr)
 	}
 	else if (*nptr == '+')
 		nptr++;
-	return (calcule(nptr, signe));
+	r = calcule(nptr, signe, list_nbr, s);
+	return (r);
 }

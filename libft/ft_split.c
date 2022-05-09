@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhouya <akhouya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 22:57:39 by akhouya           #+#    #+#             */
-/*   Updated: 2021/11/16 22:07:10 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/05/09 19:22:47 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	nbrarray(char const *s, char c)
+int	nbrarray(char const *s, char c)
 {
 	int	i;
 	int	j;
@@ -36,7 +36,7 @@ static int	nbrarray(char const *s, char c)
 	return (nbrstr);
 }
 
-static void	frealltab(char **str)
+void	frealltab(char **str)
 {
 	int	l;
 
