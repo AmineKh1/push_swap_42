@@ -313,3 +313,41 @@ two_list	*instruction_when_rev(two_list *ab, int index)
 	}
 	return ab;
 }
+void	push_to_b(two_list *ab, int min_r, int max_r, int midle)
+{
+	int i;
+	i = ft_lstsize(ab->b);
+	while (i-- < (max_r - min_r))
+	{
+	if (ab->a->index >= min_r && ab->b->index <= max_r)
+		ab = move1to2(ab);
+	if (ab->b->index < midle)
+		round_b(ab->b);
+	}
+}
+two_list	*push_to_a(two_list *ab, int min_r, int max_r)
+{
+	int i;
+	int j;
+	j = 0;
+	i = ft_lstsize(ab->a);
+	if (ft_lstlast(ab->a)->index == max_r)
+		ab = rev_round_a(ab->a);
+	if (ab->b->index >= max_r)
+		ab->b = rev_round_b(ab->b);
+	else if(ab->b->index == max_r)
+	{
+		ab = move2to1(ab);
+		ab = push_to_a(ab, max_r);
+	}
+	else if (ab->b->index < max_r && ft_lstlast(ab->a) < ab->b)
+	{
+		ab = move2to1(ab);
+		ab->a = round_a(ab->a);
+	}
+	else
+	{	
+		round_b(ab->b);
+	}
+	
+}

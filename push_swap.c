@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akhouya <akhouya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 03:31:50 by akhouya           #+#    #+#             */
-/*   Updated: 2021/12/23 20:31:21 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/05/13 12:13:01 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,10 @@ int main(int argc,char *argv[])
 				return 0;
 			}
 			if(i == 1 && j == 0)
-				list_nbr = ft_lstnew(ft_atoi(s[j], list_nbr, s));
+				list_nbr = ft_lstnew(ft_atoi(s[j], &list_nbr, s));
 			else
 			{
-				h = ft_lstnew(ft_atoi(s[j], list_nbr, s));
+				h = ft_lstnew(ft_atoi(s[j], &list_nbr, s));
 				ft_lstadd_back(&list_nbr, h);
 			}	
 		}
@@ -184,9 +184,7 @@ int main(int argc,char *argv[])
 		u = p;
 		u = r - p;
 		while(place_of_index(f->a, u) != -1)
-		{
 			f = instruction_when(f, u);
-		}
 		p = p/o;
 		//prefcet for p = 1.33 <= 100
 	}
@@ -233,7 +231,7 @@ int main(int argc,char *argv[])
 		f = instruction_when_rev(f, big_in_b(f->b));
 	// round_ab(f);
 	// round_ab(f);
-	// printlis(f);
+	 printlis(f);
 	
 	list_nbr = h;
 	ft_lstclear(&(f->a));
@@ -242,7 +240,6 @@ int main(int argc,char *argv[])
 	f->b = NULL;
 	free(f);
 	f = NULL;
-	// system("leaks a.out");
+	//system("leaks a.out");
 
 }
-// rebuild functions of sort from midlle and create fucmtion of sorting 5 algo
