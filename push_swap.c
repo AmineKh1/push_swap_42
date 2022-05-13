@@ -178,6 +178,7 @@ int main(int argc,char *argv[])
 		o = 1.36;
 	else
 		o = 1.215;
+	p = o;
 	while(check_sort(f->a) != 0 )
 	{
 		u = p;
