@@ -26,5 +26,6 @@ two_list	*instruction_when_rev(two_list *ab, int index);
 two_list	*move2to1(two_list *ab);
 int	big_in_b(t_list *a);
 void	printlis(two_list *f);
+two_list	*push_to_b(two_list *ab, int min_r, int max_r, int midle);
 two_list	*round_ab(two_list *ab);
 #endif
