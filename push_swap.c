@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 03:31:50 by akhouya           #+#    #+#             */
-/*   Updated: 2022/05/14 16:42:20 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/05/30 19:48:51 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	strisdigit(char *str)
 }
 void	printlis(two_list *f)
 {
+	ft_putendl_fd("---A", 1);
 	while (f->a!= NULL)
 	{
 		ft_putnbr_fd(f->a->index, 2);
@@ -227,32 +228,52 @@ int main(int argc,char *argv[])
 		
 	// }
 	// printf("-----------\n");
-	//while(f->b!= NULL)
-	//	f = instruction_when_rev(f, big_in_b(f->b));
+	
 	// round_ab(f);
 	// round_ab(f);
 	int min_r, max_r, midle;
 	i = ft_lstsize(f->a);
 	midle = i/2;
-	j = i * 10 / 100;
+	j = i * 8 / 100;
 	max_r = midle + j;
 	min_r = midle - j;
-	y = 5;
 	//printf("%d-%d-%d",max_r, min_r, midle);
 	//exit(0);
 	//while(y-- > 1)
 	//{
-		f = push_to_b(f, min_r, max_r, midle, *(f->a));
-		min_r = min_r - j;
-		max_r = max_r + j;
-		//f = push_to_b(f, min_r, max_r, midle, &(f->a));
+		while(f->a != NULL)
+		{
+			if(i < j * 2)
+				j = i / 2;
+			while(ft_lstsize(f->a) > i - (j * 2))
+				f = push_to_b(f, min_r, max_r, midle, j * 2);
+			min_r = min_r - j;
+			max_r = max_r + j;
+			i = ft_lstsize(f->a);
+			//printf("%d\n", i);
+		}
+	
+	max_r = ft_lstsize(f->b) - 1;
+	while(f->b != NULL)
+		f = instruction_when_rev(f, max_r--, 0, 0);
+	//printf("---\n");
+			//printf("---%d\n", max_r);
+	//f = instruction_when_rev(f, max_r--, 0, 0);
+	//f = instruction_when_rev(f, ft_lstsize(f->b) - 1, 0, 0);
+		//{
+		//	while(ft_lstsize(f->b) > i - j)
+		//		f = push_to_a(f, max_r);
+		//	max_r = max_r - 1;
+		//	i = ft_lstsize(f->b);
+		//}
+		
 		//min_r = min_r - j;
 		//max_r = max_r + j;
 		//f = push_to_b(f, min_r, max_r, midle, &(f->a));
 		//printf("%d-%d-%d\n",max_r, min_r, midle);
 		//exit(0);
 	//}
-	 printlis(f);
+	// printlis(f);
 	
 	list_nbr = h;
 	ft_lstclear(&(f->a));
