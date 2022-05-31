@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 03:31:50 by akhouya           #+#    #+#             */
-/*   Updated: 2022/05/30 19:48:51 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:16:11 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,23 +234,28 @@ int main(int argc,char *argv[])
 	int min_r, max_r, midle;
 	i = ft_lstsize(f->a);
 	midle = i/2;
-	j = i * 8 / 100;
+	j = 13;
 	max_r = midle + j;
 	min_r = midle - j;
+
 	//printf("%d-%d-%d",max_r, min_r, midle);
 	//exit(0);
 	//while(y-- > 1)
 	//{
+		//f->a = sort_tree(f->a);
+	//printf("%d--\n", place_of_index(f->a, max_r,min_r));
 		while(f->a != NULL)
 		{
 			if(i < j * 2)
 				j = i / 2;
 			while(ft_lstsize(f->a) > i - (j * 2))
+			{
 				f = push_to_b(f, min_r, max_r, midle, j * 2);
+			}
 			min_r = min_r - j;
 			max_r = max_r + j;
 			i = ft_lstsize(f->a);
-			//printf("%d\n", i);
+			//printf("%d---%d\n", min_r, max_r);
 		}
 	
 	max_r = ft_lstsize(f->b) - 1;
