@@ -176,7 +176,7 @@ int	place_of_index(t_list *l, int max_r, int min_r)
 	while(l != NULL)
 	{
 		count++;
-		if(l->index <= max_r && l->index >= min_r)
+		if(l->index < max_r && l->index >= min_r)
 		{
 			first = count;
 			break;
@@ -187,7 +187,7 @@ int	place_of_index(t_list *l, int max_r, int min_r)
 	while(l != NULL)
 	{
 		count++;
-		if(l->index <= max_r && l->index >= min_r)
+		if(l->index < max_r && l->index >= min_r)
 		{
 			last = count;
 		}
@@ -200,6 +200,8 @@ int	place_of_index(t_list *l, int max_r, int min_r)
 }
 int	place_of_indexx(t_list *l, int index)
 {
+	int	j;
+	j = ft_lstsize(l);
 	int count;
 	count = 0;
 	while(l != NULL)
@@ -207,10 +209,12 @@ int	place_of_indexx(t_list *l, int index)
 		count++;
 		if(l->index == index)
 		{
-			return count;
+			break ;
 		}
 		l = l->next;
 	}
+	if (count >= j/2)
+		return 1;
 	return -1;
 }
 int	place_of_inde(t_list *l, int max_r, int min_r)
@@ -334,46 +338,47 @@ two_list	*instruction_when(two_list *ab, int index)
 //{
 	
 //}
-two_list	*instruction_when_rev(two_list *ab, int index, int j, int h)
+
+two_list	*instruction_when_rev(two_list *ab, int index, int h, int q)
 {
+	int i;
+	i = place_of_indexx(ab->b, index);
 	if(ab->b->index == index)
 	{
 		ab = move2to1(ab);
-		while(j > 0)
-		{
-			ab->b = rev_round_b(ab->b);
-			j--;
-		}
 	}
-	else if (ab->b->next->index == index)
-	{
-		ab->b = swap_b(ab->b);
-		ab = instruction_when_rev(ab, index, j, h);
-	}
+	//else if (ab->b->next->index == index)
+	//{
+	//	ab->b = swap_b(ab->b);
+	//	ab = instruction_when_rev(ab, index, j, h);
+	//}
 	
-	else if (ft_lstsize(ab->a) > 3 && ft_lstlast(ab->a)->index == index)
+	else if (ft_lstsize(ab->a) > 0 && ft_lstlast(ab->a)->index == index)
 	{
 		ab->a = rev_round_a(ab->a);
+
 	}
-	
-	else if(ft_lstsize(ab->a) > 3 && h == -1)
+	else if(ft_lstsize(ab->a) == 0 || ft_lstlast(ab->a)->index == q)
+	{
+		ab = move2to1(ab);
+		if(ft_lstsize(ab->a) != 0)
+			ab->a = round_a(ab->a);
+		ab = instruction_when_rev(ab, index, h, q);
+	}
+	else if(ft_lstlast(ab->a)->index < ab->b->index)
 	{
 		ab = move2to1(ab);
 		ab->a = round_a(ab->a);
-		h = 0;
-		ab = instruction_when_rev(ab, index, j, h);
+		ab = instruction_when_rev(ab, index, h, q);
 	}
-	else if (ft_lstsize(ab->a) > 3 && h == 0 && ft_lstlast(ab->a)->index < ab->b->index)
-	{
-		ab = move2to1(ab);
-		ab->a = round_a(ab->a);
-		ab = instruction_when_rev(ab, index, j, h);
-	}
+
 	else
 	{
-		ab->b = round_b(ab->b);
-		j++;
-		ab = instruction_when_rev(ab, index, j, h);
+		if(i == 1)
+			ab->b = rev_round_b(ab->b);
+		if(i == -1)
+			ab->b = round_b(ab->b);
+		ab = instruction_when_rev(ab, index, h, q);
 	}
 	return ab;
 }
@@ -382,18 +387,18 @@ two_list	*push_to_b(two_list *ab, int min_r, int max_r, int midle, int j)
 	int i;
 	i = place_of_index(ab->a, max_r, min_r);
 	
-	if (ab->a->index >= min_r && ab->a->index <= max_r)
+	if (ab->a->index >= min_r && ab->a->index < max_r)
 	{
 		ab = move1to2(ab);
 		j--;
 		if(ft_lstsize(ab->b) != 0 && ab->b->index < midle)
 			ab->b = round_b(ab->b);
 	}
-	else if (ab->a->next->index >= min_r && ab->a->next->index <= max_r)
-	{
-		ab->a = swap_a(ab->a);
-		ab = push_to_b(ab, min_r, max_r, midle, j);
-	}
+	//else if (ab->a->next->index >= min_r && ab->a->next->index < max_r)
+	//{
+	//	ab->a = swap_a(ab->a);
+	//	ab = push_to_b(ab, min_r, max_r, midle, j);
+	//}
 	else 
 	{
 		//printf("%d--\n", place_of_index(ab->a, max_r,min_r));

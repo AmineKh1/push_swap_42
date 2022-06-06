@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 03:31:50 by akhouya           #+#    #+#             */
-/*   Updated: 2022/05/31 17:16:11 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:28:04 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ int	strisdigit(char *str)
 void	printlis(two_list *f)
 {
 	ft_putendl_fd("---A", 1);
+	int i = 0;
 	while (f->a!= NULL)
 	{
+		
 		ft_putnbr_fd(f->a->index, 2);
 		ft_putstr_fd("\n",1);
 		f->a = f->a->next;
@@ -41,6 +43,10 @@ void	printlis(two_list *f)
 	ft_putendl_fd("---b", 1);
 	while (f->b!= NULL)
 	{
+		
+		//if( i % 13 == 0)
+			//ft_putstr_fd("---\n", 1);
+		i++;
 		ft_putnbr_fd(f->b->index, 1);
 		ft_putstr_fd("\n",1);
 		f->b = f->b->next;
@@ -234,7 +240,12 @@ int main(int argc,char *argv[])
 	int min_r, max_r, midle;
 	i = ft_lstsize(f->a);
 	midle = i/2;
-	j = 13;
+	if(i <= 100)
+	{
+		j = 13;
+	}
+	else
+		j = 36;
 	max_r = midle + j;
 	min_r = midle - j;
 
@@ -246,10 +257,14 @@ int main(int argc,char *argv[])
 	//printf("%d--\n", place_of_index(f->a, max_r,min_r));
 		while(f->a != NULL)
 		{
+			//if (ft_lstsize(f->b) == 100)
+			//	break;
 			if(i < j * 2)
 				j = i / 2;
 			while(ft_lstsize(f->a) > i - (j * 2))
 			{
+				//if (ft_lstsize(f->b) == 100)
+				//	break;
 				f = push_to_b(f, min_r, max_r, midle, j * 2);
 			}
 			min_r = min_r - j;
@@ -259,8 +274,17 @@ int main(int argc,char *argv[])
 		}
 	
 	max_r = ft_lstsize(f->b) - 1;
+	//printf("%d\n", place_of_indexx(f->b, 7));
+	int q;
+	q = big_in_b(f->b);
 	while(f->b != NULL)
-		f = instruction_when_rev(f, max_r--, 0, 0);
+		f = instruction_when_rev(f, max_r--, -1, q);
+		// printlis(f);
+		// f = instruction_when_rev(f, max_r--, -1, q);
+		// f = instruction_when_rev(f, max_r--, -1, q);
+		// printlis(f);
+	//f = instruction_when_rev(f, max_r--, -1);
+		// printlis(f);
 	//printf("---\n");
 			//printf("---%d\n", max_r);
 	//f = instruction_when_rev(f, max_r--, 0, 0);
@@ -279,7 +303,6 @@ int main(int argc,char *argv[])
 		//exit(0);
 	//}
 	// printlis(f);
-	
 	list_nbr = h;
 	ft_lstclear(&(f->a));
 	ft_lstclear(&(f->b));
