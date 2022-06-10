@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:04:22 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/10 12:07:10 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/10 15:11:08 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,24 @@ void	init_var(t_pushswap *p_s, t_stacks *f)
 	f->a = p_s->list_nbr;
 	f->b = NULL;
 	p_s->i = ft_lstsize(f->a);
-	p_s->midle = p_s->i / 2;
-	if (p_s->i <= 150)
-		p_s->j = 13;
+	if(p_s->i <= 3)
+	{
+		f->a = sort_tree(f->a);
+	}
+	else if(p_s->i == 5)
+		f = sort_five(f);
 	else
-		p_s->j = 36;
-	p_s->max_r = p_s->midle + p_s->j;
-	p_s->min_r = p_s->midle - p_s->j;
+	{
+		p_s->midle = p_s->i / 2;
+		if (p_s->i <= 150)
+			p_s->j = 13;
+		else
+			p_s->j = 36;
+		p_s->max_r = p_s->midle + p_s->j;
+		p_s->min_r = p_s->midle - p_s->j;
+		algo_tob(p_s, f);
+		algo_toa(p_s, f);
+	}
 }
 
 void	algo_tob(t_pushswap *p_s, t_stacks *f)

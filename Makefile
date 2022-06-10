@@ -1,4 +1,5 @@
 NAME = push_swap
+NAMEB = 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRC = push_swap_instruction.c push_swap_instruction1.c push_swap_instruction2.c push_swap_instruction3.c push_swap_instruction4.c push_swap_instruction5.c func_sort.c push_swap.c 

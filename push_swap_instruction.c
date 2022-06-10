@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:03:13 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/10 12:05:37 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/10 16:23:25 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ t_stacks	*push_to_b(t_stacks *ab, t_pushswap *p_s, int j)
 
 t_list	*sort_tree(t_list *a)
 {
+	if (ft_lstsize(a) == 2 && a->index > a->next->index)
+	{
+			a = swap_a(a);
+			return a;
+	}
 	if (a->index > a->next->index && a->next->index < a->next->next->index)
 		a = swap_a(a);
 	if (a->next->index > a->next->next->index && a->index < a->next->index)
@@ -115,14 +120,33 @@ t_list	*sort_tree(t_list *a)
 
 t_stacks	*sort_five(t_stacks *ab)
 {
-	int b;
-	b = big_in_b(a);
-	if (a->index == b || a->index == 0)
-		ab = move1to2(ab);
-	else if (a->next->index == b || a->index < a->next->index == 0)
-		ab->a = swap_a(ab->a);
-	else
-		ab->a = round_a(ab->a);
+	//printlis(ab);
+	//exit(0);
+	while(ft_lstsize(ab->b) < 2)
+	{
+		//printlis(ab);
+		if (ab->a->index == 4 || ab->a->index == 0)
+		{
+			ab = move1to2(ab);
+		}
+		else if (ab->a->next->index == 4 || ab->a->next->index == 0)
+		{
+			ab->a = swap_a(ab->a);
+		}
+		else
+		{
+				ab->a = rev_round_a(ab->a);
+		}
+		//if (ft_lstsize(ab->b) == 2)
+		//	break ;
 	}
-	return (a);
+	ab->a = sort_tree(ab->a);
+	while(ab->b != NULL)
+	{
+		ab = move2to1(ab);
+		if(ab->a->index == 4)
+			ab->a = round_a(ab->a);
+	}
+	printlis(ab);
+	return (ab);
 }

@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:31:53 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/09 13:44:07 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/10 15:01:56 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int			checkround_b(t_stacks *ab);
 int			checkr_round_b(t_stacks *ab);
 t_list		*round_a(t_list *lst);
 t_list		*round_b(t_list *lst);
-t_stacks	*sort_five(t_stacks *ab)
+t_stacks	*sort_five(t_stacks *ab);
 t_stacks	*round_ab(t_stacks *ab);
 t_list		*rev_round_a(t_list *lst);
 t_stacks	*instruction_when(t_stacks *ab, int index);
