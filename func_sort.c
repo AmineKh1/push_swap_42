@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:04:22 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/09 15:00:03 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/10 12:07:10 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,6 @@ void	algo_toa(t_pushswap *p_s, t_stacks *f)
 	p_s->q = big_in_b(f->b);
 	while (f->b != NULL)
 		f = instruction_when_rev(f, p_s->max_r--, p_s->q);
+	while (check_sort(f->a) != 0)
+		f->a = rev_round_a(f->a);
 }

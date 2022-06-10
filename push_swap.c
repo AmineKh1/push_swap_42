@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 03:31:50 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/07 16:40:17 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/10 12:07:46 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	main(int argc, char *argv[])
 	init_var(&p_s, f);
 	algo_tob(&p_s, f);
 	algo_toa(&p_s, f);
+	//printlis(f);
 	p_s.list_nbr = p_s.h;
 	ft_lstclear(&(f->a));
 	ft_lstclear(&(f->b));

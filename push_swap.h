@@ -58,6 +58,7 @@ int			checkround_b(t_stacks *ab);
 int			checkr_round_b(t_stacks *ab);
 t_list		*round_a(t_list *lst);
 t_list		*round_b(t_list *lst);
+t_stacks	*sort_five(t_stacks *ab)
 t_stacks	*round_ab(t_stacks *ab);
 t_list		*rev_round_a(t_list *lst);
 t_stacks	*instruction_when(t_stacks *ab, int index);

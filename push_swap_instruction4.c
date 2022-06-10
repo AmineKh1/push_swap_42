@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 12:31:28 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/09 16:05:08 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/10 10:58:29 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,23 @@ int	place_of_indexx(t_list *l, int index)
 {
 	int	j;
 	int	count;
+	int dflt;
 
+	dflt = 0;
 	j = ft_lstsize(l);
 	count = 0;
 	while (l != NULL)
 	{
 		count++;
 		if (l->index == index)
+		{
+			dflt = 1;
 			break ;
+		}
 		l = l->next;
 	}
+	if (dflt == 0)
+		return 0;
 	if (count >= j / 2)
 		return (1);
 	return (-1);
