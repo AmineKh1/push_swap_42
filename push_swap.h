@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:31:53 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/10 15:01:56 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/11 12:11:56 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ int			strisdigit(char *str);
 void		printlis(t_stacks *f);
 char		*ft_strjoin_free(char *s, char c);
 char		*get_next_line(int fd);
+int			check_list(t_list *lst);
 #endif

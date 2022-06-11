@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 11:03:13 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/10 16:23:25 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/11 13:14:54 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,15 @@ t_list	*sort_tree(t_list *a)
 			return a;
 	}
 	if (a->index > a->next->index && a->next->index < a->next->next->index)
+	{
 		a = swap_a(a);
+		a = sort_tree(a);
+	}
 	if (a->next->index > a->next->next->index && a->index < a->next->index)
+	{
 		a = rev_round_a(a);
+		a = sort_tree(a);
+	}
 	else if (a->index > a->next->index && a->next->index > a->next->next->index)
 	{
 		a = round_a(a);
@@ -122,7 +128,7 @@ t_stacks	*sort_five(t_stacks *ab)
 {
 	//printlis(ab);
 	//exit(0);
-	while(ft_lstsize(ab->b) < 2)
+	while(ft_lstsize(ab->a) > 3)
 	{
 		//printlis(ab);
 		if (ab->a->index == 4 || ab->a->index == 0)
@@ -147,6 +153,41 @@ t_stacks	*sort_five(t_stacks *ab)
 		if(ab->a->index == 4)
 			ab->a = round_a(ab->a);
 	}
-	printlis(ab);
+	//printlis(ab);
 	return (ab);
+}
+
+int	check_list(t_list *lst)
+{
+	t_list	*h;
+
+	while (lst != NULL)
+	{
+		h = lst->next;
+		while (h != NULL)
+		{
+			if (lst->content == h->content)
+				return (1);
+			h = h->next;
+		}
+		lst = lst->next;
+	}
+	return (0);
+}
+
+int	strisdigit(char *str)
+{
+	int	k;
+
+	k = 1;
+	if (ft_strlen(str) == 0)
+		return (0);
+	if (*str == '-' && *(str + 1) != '\0')
+	{
+		str++;
+		k = 1;
+	}
+	while (*str && k == 1)
+		k = ft_isdigit(*str++);
+	return (k);
 }
