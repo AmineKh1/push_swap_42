@@ -6,12 +6,12 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:04:22 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/11 13:49:05 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/11 16:53:43 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include<stdio.h>
+
 void	condition_addinglist(t_pushswap *p_s)
 {
 	if (p_s->i == 1 && p_s->j == 0)
@@ -33,10 +33,9 @@ void	handle_errors(int argc, char **argv, t_pushswap *p_s)
 		exit(1);
 	while (++p_s->i < argc)
 	{
-
 		p_s->j = -1;
 		p_s->s = ft_split(argv[p_s->i], ' ');
-		if(p_s->s[0] == 0)
+		if (p_s->s[0] == 0)
 		{
 			ft_putendl_fd("Error", 1);
 			exit(1);
@@ -64,9 +63,9 @@ void	init_var(t_pushswap *p_s, t_stacks *f)
 	p_s->i = ft_lstsize(f->a);
 	if (check_sort(p_s->list_nbr) == 0)
 		return ;
-	if(p_s->i <= 3)
+	if (p_s->i <= 3)
 		f->a = sort_tree(f->a);
-	else if(p_s->i <= 5)
+	else if (p_s->i <= 5)
 		f = sort_five(f);
 	else
 	{
@@ -109,22 +108,4 @@ void	algo_toa(t_pushswap *p_s, t_stacks *f)
 		f = instruction_when_rev(f, p_s->max_r--, p_s->q);
 	while (check_sort(f->a) != 0)
 		f->a = rev_round_a(f->a);
-}
-
-void	printlis(t_stacks *f)
-{
-	ft_putendl_fd("---a", 1);
-	while (f->a != NULL)
-	{
-		ft_putnbr_fd(f->a->index, 2);
-		ft_putstr_fd("\n", 2);
-		f->a = f->a->next;
-	}
-	ft_putendl_fd("---b", 2);
-	while (f->b != NULL)
-	{
-		ft_putnbr_fd(f->b->index, 2);
-		ft_putstr_fd("\n", 2);
-		f->b = f->b->next;
-	}
 }

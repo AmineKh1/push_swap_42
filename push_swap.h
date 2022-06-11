@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:31:53 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/11 12:11:56 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/11 17:04:13 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ typedef struct s_stacks
 	struct s_list	*a;
 	struct s_list	*b;
 }			t_stacks;
+typedef struct s_var
+{
+	int	count;
+	int	first;
+	int	last;
+	int	i;
+	int	dflt;
+}			t_var;
 typedef struct s_pushswap
 {
 	char	**s;
@@ -53,6 +61,7 @@ void		index_list(t_list *lst);
 int			place_of_index(t_list *l, int max_r, int min_r);
 int			place_of_indexx(t_list *l, int index);
 int			place_of_inde(t_list *l, int max_r, int min_r);
+void		help_place_norme(t_list *l, int max_r, int min_r, t_var *var);
 int			checkswap_b(t_stacks *ab);
 int			checkround_b(t_stacks *ab);
 int			checkr_round_b(t_stacks *ab);
@@ -67,10 +76,10 @@ int			midle_index(t_list *a);
 t_stacks	*instruction_when_rev(t_stacks *ab, int index, int q);
 t_stacks	*move2to1(t_stacks *ab);
 int			big_in_b(t_list *a);
+int			check_rr(t_stacks *ab, t_pushswap *p_s);
 void		printlis(t_stacks *f);
 t_stacks	*push_to_b(t_stacks *ab, t_pushswap *p_s, int j);
 t_stacks	*round_ab(t_stacks *ab);
-int			place_of_inde(t_list *l, int max_r, int min_r);
 t_stacks	*push_to_a(t_stacks *ab, int max_r);
 t_list		*sort_tree(t_list *a);
 int			place_of_index(t_list *l, int max_r, int min_r);

@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 02:22:30 by akhouya           #+#    #+#             */
-/*   Updated: 2022/05/09 20:18:13 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/11 17:03:17 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		ft_isprint(int c);
 int		ft_isdigit(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
-t_list *ft_lstbeforelast(t_list *lst);
+t_list	*ft_lstbeforelast(t_list *lst);
 void	frealltab(char **str);
 int		nbrarray(char const *s, char c);
 int		ft_isalnum(int c);

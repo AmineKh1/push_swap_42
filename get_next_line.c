@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 13:43:18 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/11 13:50:30 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/11 17:01:34 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,5 @@ char	*get_next_line(int fd)
 		free(line);
 		return (NULL);
 	}
-	if (line == NULL)
-		return NULL;
 	return (line);
 }

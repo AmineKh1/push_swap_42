@@ -1,9 +1,9 @@
 NAME = push_swap
-NAMEB = check_mine
+NAMEB = checker_bonus
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRC = push_swap_instruction.c push_swap_instruction1.c push_swap_instruction2.c push_swap_instruction3.c push_swap_instruction4.c push_swap_instruction5.c func_sort.c push_swap.c 
-SRCB = push_swap_instruction.c push_swap_instruction1.c push_swap_instruction2.c push_swap_instruction3.c push_swap_instruction4.c push_swap_instruction5.c func_sort.c instruction_checker_bonus.c instruction_checker_bonus1.c checker_push_swap.c get_next_line.c
+SRC = push_swap_instruction.c push_swap_instruction1.c push_swap_instruction2.c push_swap_instruction3.c push_swap_instruction4.c push_swap_instruction5.c func_sort.c push_swap.c push_instra.c print_stack.c
+SRCB = push_swap_instruction.c push_swap_instruction1.c push_swap_instruction2.c push_swap_instruction3.c push_swap_instruction4.c push_swap_instruction5.c func_sort.c instruction_checker_bonus.c push_instra.c instruction_checker1_bonus.c push_swap_bonus.c get_next_line.c print_stack.c
 OBJ = ${SRC:.c=.o}
 OBJB = ${SRCB:.c=.o}
 RM = rm -f

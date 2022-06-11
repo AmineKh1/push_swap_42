@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 22:06:41 by akhouya           #+#    #+#             */
-/*   Updated: 2022/05/09 19:27:02 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/11 17:02:56 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ t_list	*ft_lstlast(t_list *lst)
 		lst = lst->next;
 	return (lst);
 }
-t_list *ft_lstbeforelast(t_list *lst)
+
+t_list	*ft_lstbeforelast(t_list *lst)
 {
 	if (!lst || lst->next == NULL)
 		return (NULL);
