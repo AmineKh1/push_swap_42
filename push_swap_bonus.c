@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 13:45:25 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/11 17:31:55 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/11 17:34:37 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_list	*swap_b_check(t_list *lst)
 
 void	compare_exit(char *s)
 {
-	void	(*s);
-
+	free(s);
+	s = NULL;
 	ft_putendl_fd("Error", 1);
 	exit(1);
 }
