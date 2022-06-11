@@ -6,7 +6,7 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 13:45:25 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/11 17:24:44 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/11 17:31:55 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ t_list	*swap_b_check(t_list *lst)
 	return (lst);
 }
 
-void	compare_exit()
+void	compare_exit(char *s)
 {
+	void	(*s);
+
 	ft_putendl_fd("Error", 1);
 	exit(1);
 }
@@ -51,7 +53,7 @@ void	compare(t_stacks *f, char *s)
 	else if (ft_memcmp(s, "pa\n", 3) == 0)
 		f = move2to1_check(f);
 	else
-		compare_exit();
+		compare_exit(s);
 }
 
 void	handle_error_checker(t_stacks *f)
