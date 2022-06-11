@@ -6,12 +6,11 @@
 /*   By: akhouya <akhouya@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 13:45:25 by akhouya           #+#    #+#             */
-/*   Updated: 2022/06/11 14:01:37 by akhouya          ###   ########.fr       */
+/*   Updated: 2022/06/11 15:25:30 by akhouya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-#include<string.h>
 t_list	*swap_b_check(t_list *lst)
 {
     if (ft_lstsize(lst) < 2)
@@ -42,35 +41,34 @@ int main(int argc, char **argv)
 	s = get_next_line(0);
 	while(s != NULL)
 	{
-		if (strcmp(s, "sa"))
+		if (ft_memcmp(s, "sa\n", 3) == 0)
 		{
-			write(1, "s",1);
 			f->a = swap_a_check(f->a);
 		}
-		else if(strcmp(s, "sb"))
+		else if(ft_memcmp(s, "sb\n", 3) == 0)
 		{
 			f->b = swap_b_check(f->b);
 		}
-		else if(strcmp(s, "ss"))
+		else if(ft_memcmp(s, "ss\n", 3) == 0)
 		{
 			f = swap_ss_check(f);
 		}
-		else if(strcmp(s, "ra"))
+		else if(ft_memcmp(s, "ra\n", 3) == 0)
 		{
 			f->a = round_a_check(f->a);
 		}
-		else if(strcmp(s, "rb"))
+		else if(ft_memcmp(s, "rb\n", 3) == 0)
 			f->b = round_b_check(f->b);
-		else if(strcmp(s, "rr"))
+		else if(ft_memcmp(s, "rr\n", 3) == 0)
 			f = round_ab_check(f);
-		else if(strcmp(s, "rra"))
+		else if(ft_memcmp(s, "rra\n", 4) == 0)
 		{
 			write(1, "r",1);
 			f->a = rev_round_a_check(f->a);
 		}
-		else if(strcmp(s, "rrb"))
+		else if(ft_memcmp(s, "rrb\n", 4) == 0)
 			f->b = rev_round_b_check(f->b);
-		else if(strcmp(s, "rrr"))
+		else if(ft_memcmp(s, "rrr\n", 4) == 0)
 			f = rev_round2_check(f);
 		else
 		{
@@ -84,5 +82,4 @@ int main(int argc, char **argv)
 		ft_putendl_fd("OK", 1);
 	else
 		ft_putendl_fd("KO", 1);
-	printlis(f);
 }
