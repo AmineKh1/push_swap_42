@@ -24,7 +24,7 @@ void	compare_exit(char *s)
 {
 	free(s);
 	s = NULL;
-	ft_putendl_fd("Error", 1);
+	ft_putendl_fd("Error", 2);
 	exit(1);
 }
 
@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 	handle_errors(argc, argv, &p_s);
 	if (check_list(p_s.list_nbr) == 1)
 	{
-		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Error", 2);
 		exit(1);
 	}
 	f = malloc(sizeof(t_stacks));

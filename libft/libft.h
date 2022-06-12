@@ -49,7 +49,7 @@ int		nbrarray(char const *s, char c);
 int		ft_isalnum(int c);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_bzero(void *s, size_t n);
-int		ft_atoi(const char *nptr, t_list **list_nbr, char **s);
+int		ft_atoi(const char *nptr, char **s);
 char	*ft_strdup(const char *s);
 char	**ft_split(char const *s, char c);
 char	*ft_strtrim(char const *s1, char const *set);

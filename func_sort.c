@@ -17,12 +17,12 @@ void	condition_addinglist(t_pushswap *p_s)
 	if (p_s->i == 1 && p_s->j == 0)
 	{
 		p_s->list_nbr = ft_lstnew(ft_atoi(p_s->s[p_s->j],
-					&p_s->list_nbr, p_s->s));
+					p_s->s));
 	}
 	else
 	{	
 		p_s->h = ft_lstnew(ft_atoi(p_s->s[p_s->j],
-					&p_s->list_nbr, p_s->s));
+					p_s->s));
 		ft_lstadd_back(&p_s->list_nbr, p_s->h);
 	}
 }
@@ -37,14 +37,14 @@ void	handle_errors(int argc, char **argv, t_pushswap *p_s)
 		p_s->s = ft_split(argv[p_s->i], ' ');
 		if (p_s->s[0] == 0)
 		{
-			ft_putendl_fd("Error", 1);
+			ft_putendl_fd("Error", 2);
 			exit(1);
 		}
 		while (p_s->s[++p_s->j] != NULL)
 		{
 			if (strisdigit(p_s->s[p_s->j]) == 0)
 			{
-				ft_putendl_fd("Error", 1);
+				ft_putendl_fd("Error", 2);
 				exit(1);
 			}
 			condition_addinglist(p_s);

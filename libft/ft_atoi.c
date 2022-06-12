@@ -12,7 +12,7 @@
 
 #include"libft.h"
 
-static int	calcule(const char *nptr, int sign, t_list **list_nbr, char **s)
+static int	calcule(const char *nptr, int sign, char **s)
 {
 	unsigned long	r;
 
@@ -20,21 +20,20 @@ static int	calcule(const char *nptr, int sign, t_list **list_nbr, char **s)
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		r = r * 10;
-		if ((r > 2147483647 && sign == 1) || (r > 2147483648 && sign == -1))
-		{
-			ft_lstclear(list_nbr);
-			frealltab(s);
-			free(s);
-			ft_putendl_fd("error", 1);
-			exit(1);
-		}
 		r = r + (*nptr - '0');
 		nptr++;
+	}
+	if ((r > 2147483647 && sign == 1) || (r > 2147483648 && sign == -1))
+	{
+		frealltab(s);
+		free(s);
+		ft_putendl_fd("Error", 2);
+		exit(1);
 	}
 	return ((int)r * sign);
 }
 
-int	ft_atoi(const char *nptr, t_list **list_nbr, char **s)
+int	ft_atoi(const char *nptr, char **s)
 {
 	unsigned long	r;
 	int				signe;
@@ -51,6 +50,6 @@ int	ft_atoi(const char *nptr, t_list **list_nbr, char **s)
 	}
 	else if (*nptr == '+')
 		nptr++;
-	r = calcule(nptr, signe, list_nbr, s);
+	r = calcule(nptr, signe, s);
 	return (r);
 }
